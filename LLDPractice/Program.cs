@@ -1,4 +1,6 @@
 ﻿using System;
+using LLDPractice.Models;
+using LLDPractice.Interfaces;
 
 namespace LLDPractice
 {
@@ -6,7 +8,13 @@ namespace LLDPractice
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IEngine petrolEngine = new PetrolEngine();
+            Vehicle car = new Car("Sedan", petrolEngine);
+
+            Console.WriteLine($"Vehicle name : {car.Name}");
+
+            car.Start();
+            car.Stop();
         }
     }
 }

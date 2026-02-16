@@ -1,0 +1,19 @@
+using System;
+using LLDPractice.Interfaces;
+
+namespace LLDPractice.Models
+{
+    public class ElectricEngine: IEngine
+    {
+        public void Start()
+        {
+            Conssole.WriteLine("Starting Electric Engine");
+        }
+
+        public void Stop()
+        {
+            Conssole.WriteLine("Stopping Electric Engine");
+        }
+    }
+
+}
