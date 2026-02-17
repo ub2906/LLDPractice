@@ -5,7 +5,7 @@ namespace LLDPractice.Models
 {
     public class Car : Vehicle
     {
-        public Car(string name, IEngine engine)
+        public Car(VehicleName name, IEngine engine)
             : base(name, engine)
         {
 

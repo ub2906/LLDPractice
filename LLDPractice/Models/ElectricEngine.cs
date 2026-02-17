@@ -7,12 +7,12 @@ namespace LLDPractice.Models
     {
         public void Start()
         {
-            Conssole.WriteLine("Starting Electric Engine");
+            Console.WriteLine("Starting Electric Engine");
         }
 
         public void Stop()
         {
-            Conssole.WriteLine("Stopping Electric Engine");
+            Console.WriteLine("Stopping Electric Engine");
         }
     }
 

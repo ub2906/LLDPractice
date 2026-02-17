@@ -9,9 +9,10 @@ namespace LLDPractice
         static void Main(string[] args)
         {
             IEngine petrolEngine = new PetrolEngine();
-            Vehicle car = new Car("Sedan", petrolEngine);
+            var name = VehicleName.Create("Sedan");
+            Vehicle car = new Car(name, petrolEngine);
 
-            Console.WriteLine($"Vehicle name : {car.Name}");
+            Console.WriteLine($"Vehicle created with ID: {car.Id} and Name: {car.Name}");
 
             car.Start();
             car.Stop();
