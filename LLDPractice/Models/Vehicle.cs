@@ -6,6 +6,7 @@ namespace LLDPractice.Models
  public abstract class Vehicle
  {
         private readonly IEngine _engine;
+        private readonly IStartPolicy _startPolicy;
 
         public VehicleName Name { get; }
         public VehicleId Id { get; }
@@ -13,10 +14,11 @@ namespace LLDPractice.Models
         public bool isRunning {get; private set;}
 
         //constructor - called from main and gets the value for engine and name that will be used throughout
-        protected Vehicle(VehicleName name, IEngine engine){
+        protected Vehicle(VehicleName name, IEngine engine, IStartPolicy startPolicy){
             Id = VehicleId.Create();
             Name = name?? throw new ArgumentNullException(nameof(name));
             _engine = engine ?? throw new ArgumentNullException(nameof(engine));
+            _startPolicy = startPolicy;
             isRunning = false;
         }
 
@@ -28,6 +30,7 @@ namespace LLDPractice.Models
                 throw new InvalidOperationException("Vehicle already running");
             }
 
+            _startPolicy.BeforeStart();
             _engine.Start();
             isRunning = true;
         }
