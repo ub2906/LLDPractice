@@ -4,5 +4,6 @@ namespace LLDPractice.Interfaces
     {
         void Start();
         void Stop();
+        double FuelConsumptionPerSecond();
     }   
 }

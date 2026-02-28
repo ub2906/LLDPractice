@@ -14,5 +14,10 @@ namespace LLDPractice.Models
         {
             Console.WriteLine("Stopping PetrolEngine");
         }
+
+        public double FuelConsumptionPerSecond()
+        {
+            return 1.0;
+        }
     }
 }

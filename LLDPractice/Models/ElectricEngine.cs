@@ -14,6 +14,10 @@ namespace LLDPractice.Models
         {
             Console.WriteLine("Stopping Electric Engine");
         }
+        public double FuelConsumptionPerSecond()
+        {
+            return 0.5;
+        }
     }
 
 }

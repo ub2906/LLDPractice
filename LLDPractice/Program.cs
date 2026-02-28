@@ -11,16 +11,19 @@ namespace LLDPractice
         static void Main(string[] args)
         {
             IEngine petrolEngine = new PetrolEngine();
+            IEngine electicEngine = new ElectricEngine();
             var name = VehicleName.Create("Sedan");
 
             var startPolicy = StartPolicyBuilder.Build(EnvironmentType.Production);
 
-            Vehicle car = new Car(name, petrolEngine, startPolicy);
+            Vehicle car = new Car(name, electicEngine, startPolicy);
 
             Console.WriteLine($"Vehicle created with ID: {car.Id} and Name: {car.Name}");
 
             car.Start();
+            Console.WriteLine(car.FuelConsumptionPerSecond());
             car.Stop();
+            Console.WriteLine(car.FuelConsumptionPerSecond());
         }
     }
 }
