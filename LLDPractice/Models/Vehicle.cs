@@ -32,15 +32,31 @@ namespace LLDPractice.Models
             _currentState = _parkedState;
         }
 
-        //public accessors =>
-        public IVehicleState ParkedState => _parkedState;
-        public IVehicleState RunningState => _runningState;
+        //public accessors => State instances are internal implementation detail
+        // External consumers must not access concrete states
+        // public IVehicleState ParkedState => _parkedState;
+        // public IVehicleState RunningState => _runningState;
 
-        public IVehicleState BrokenState => _brokenState;
+        // public IVehicleState BrokenState => _brokenState;
 
-        public void SetState(IVehicleState state)
+        // internal void SetState(IVehicleState state)
+        // {
+        //     _currentState = state ?? throw new ArgumentNullException(nameof(state));
+        // }
+
+        internal void TransitionToParked()
         {
-            _currentState = state ?? throw new ArgumentNullException(nameof(state));
+            _currentState = _parkedState;
+        }
+
+        internal void TransitionToRunning()
+        {
+            _currentState = _runningState;
+        }
+
+        internal void TransitionToBroken()
+        {
+            _currentState = _brokenState;
         }
 
         public void Start()
@@ -56,11 +72,6 @@ namespace LLDPractice.Models
         public double FuelConsumptionPerSecond()
         {
             return _currentState.CalculateFuelConsumptionPerSecond(this);
-        }
-
-        public double GetEngineFuelConsumption()
-        {
-            return _engine.FuelConsumptionPerSecond();
         }
 
         //if we make this abstarct - that would mean vehicle does not have a common impl and every subclass NEEDS to implement a diff start 
@@ -98,6 +109,10 @@ namespace LLDPractice.Models
         public void StopEngine()
         {
             _engine.Stop();
+        }
+        public double GetEngineFuelConsumption()
+        {
+            return _engine.FuelConsumptionPerSecond();
         }
     }   
 }

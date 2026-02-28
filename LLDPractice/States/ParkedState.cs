@@ -10,8 +10,8 @@ namespace LLDPractice.States
         public override void Start(Vehicle vehicle)
         {
             vehicle.StartEngine();
-            Console.WriteLine($"current state is {vehicle.ParkedState} , now changing to {vehicle.RunningState}");
-            vehicle.SetState(vehicle.RunningState);
+            Console.WriteLine($"current state is Parked , now changing to Running");
+            vehicle.TransitionToRunning();
         }
 
         public override void Stop(Vehicle vehicle)

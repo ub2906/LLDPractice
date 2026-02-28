@@ -15,8 +15,8 @@ namespace LLDPractice.States
         public override void Stop(Vehicle vehicle)
         {
             vehicle.StopEngine();
-            Console.WriteLine($"current state is {vehicle.RunningState} , now changing to {vehicle.ParkedState}");
-            vehicle.SetState(vehicle.ParkedState);
+            Console.WriteLine($"current state is Running , now changing to Parked");
+            vehicle.TransitionToParked();
         }
 
         public override double CalculateFuelConsumptionPerSecond(Vehicle vehicle)
