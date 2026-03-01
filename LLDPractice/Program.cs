@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using LLDPractice.Patterns;
 using LLDPractice.Models;
 using LLDPractice.Interfaces;
+using LLDPractice.Factories;
 
 namespace LLDPractice
 {
@@ -10,20 +11,23 @@ namespace LLDPractice
     {
         static void Main(string[] args)
         {
-            IEngine petrolEngine = new PetrolEngine();
-            IEngine electicEngine = new ElectricEngine();
+            //IEngine petrolEngine = new PetrolEngine();
+            //IEngine electicEngine = new ElectricEngine();
+            IEngineFactory engineFactory = new PetrolEngineFactory();
+            IEngine engine = engineFactory.CreateEngine();
+
             var name = VehicleName.Create("Sedan");
 
             var startPolicy = StartPolicyBuilder.Build(EnvironmentType.Production);
 
-            Vehicle car = new Car(name, electicEngine, startPolicy);
+            Vehicle vehicle = new Car(name, engine, startPolicy);
 
-            Console.WriteLine($"Vehicle created with ID: {car.Id} and Name: {car.Name}");
+            Console.WriteLine($"Vehicle created with ID: {vehicle.Id} and Name: {vehicle.Name}");
 
-            car.Start();
-            Console.WriteLine(car.FuelConsumptionPerSecond());
-            car.Stop();
-            Console.WriteLine(car.FuelConsumptionPerSecond());
+            vehicle.Start();
+            Console.WriteLine(vehicle.FuelConsumptionPerSecond());
+            vehicle.Stop();
+            Console.WriteLine(vehicle.FuelConsumptionPerSecond());
         }
     }
 }
