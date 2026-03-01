@@ -1,5 +1,6 @@
 using LLDPractice.Interfaces;
 using LLDPractice.Models;
+using LLDPractice.Patterns;
 
 namespace LLDPractice.Factories
 {
@@ -17,9 +18,13 @@ namespace LLDPractice.Factories
 
         public Vehicle CreateVehicle(string name)
         {
-            var engine = CreateEngine();
-            var policy = CreateStartPolicy();
-            return new Car(VehicleName.Create(name), engine, policy);
+            IVehicleBuilder<Car> builder = new CarBuilder();
+
+            return builder
+                .SetName(name)
+                .SetEngine(CreateEngine())
+                .SetStartPolicy(CreateStartPolicy())
+                .Build();
         }
     }
 }

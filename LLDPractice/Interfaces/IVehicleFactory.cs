@@ -1,4 +1,5 @@
 using LLDPractice.Models;
+using LLDPractice.Patterns;
 
 namespace LLDPractice.Interfaces
 {
@@ -8,7 +9,7 @@ namespace LLDPractice.Interfaces
     {
         IEngine CreateEngine();
         IStartPolicy CreateStartPolicy();
-        Vehicle CreateVehicle(string name);
+        public Vehicle CreateVehicle(string name);
 
     }
 }
